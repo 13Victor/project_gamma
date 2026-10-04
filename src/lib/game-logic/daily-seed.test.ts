@@ -7,6 +7,14 @@ describe("toUTCDateString", () => {
     expect(toUTCDateString(date)).toBe("2026-07-12");
   });
 
+  it("el reto cambia exactamente a las 00:00 UTC", () => {
+    const lastMs = new Date(Date.UTC(2026, 6, 12, 23, 59, 59, 999));
+    const midnight = new Date(Date.UTC(2026, 6, 13, 0, 0, 0, 0));
+    expect(toUTCDateString(lastMs)).toBe("2026-07-12");
+    expect(toUTCDateString(midnight)).toBe("2026-07-13");
+    expect(getChallengeNumber(midnight)).toBe(getChallengeNumber(lastMs) + 1);
+  });
+
   it("ignora la hora local, solo importa el día UTC", () => {
     const morning = new Date(Date.UTC(2026, 6, 12, 0, 1));
     const night = new Date(Date.UTC(2026, 6, 12, 23, 59));
