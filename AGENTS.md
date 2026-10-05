@@ -24,7 +24,7 @@ Antes de dar una tarea por terminada: `npm test`, `npm run typecheck` y `npm run
 - **Alcance v0.1: solo modo Clásico.** Grid, Items, histórico, auth, i18n y límite de intentos están en el backlog (spec §2.2). Si una tarea se extiende hacia ellos, para y avísalo.
 - **Reto diario** (spec §3): día anclado a UTC, determinístico, nunca `Math.random()`. No cambies `daily-seed.ts` sin mantener sus tests en verde y avisar.
 - **La página del juego no puede resolver "hoy" en el servidor**: se prerenderiza en build. La fecha y el campeón del día se calculan en el cliente.
-- **Datos** (spec §9): `champions.json` se genera, no se edita. Lo que Data Dragon no da va en `champions-manual.json`, indexado por `id` de Data Dragon. Ningún fetch a Data Dragon fuera de `update-data.ts`.
+- **Datos** (spec §9 y `docs/fuentes-de-datos.md`): `champions.json` se genera, no se edita. Cualquier dato que añadir o corregir va en `champions-manual.json`, indexado por `id` de Data Dragon, y gana a las fuentes. Los años salen de `src/data/sources/champion-release-years.txt` y se cruzan por nombre en inglés. Ningún fetch a fuentes externas fuera de `update-data.ts`.
 - **Lógica pura y testeada** en `src/lib/game-logic/`; el store solo la envuelve y persiste. Si cambia la forma del estado persistido, sube `version` en `useGameStore` y añade `migrate`.
 - **UI sin estilos por ahora**: HTML plano, Tailwind desactivado en `globals.css`. No añadas diseño hasta que se pida; la prioridad es validar la lógica.
 - Los datos manuales son opcionales: un atributo ausente se compara como `unknown` y no debe romper ni mostrarse como fallo.
