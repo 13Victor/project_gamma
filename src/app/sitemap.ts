@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const championRoutes = getPlayableChampions().map((champion) => ({
-    url: `${SITE_URL}/campeones/${champion.slug}`,
+    url: `${SITE_URL}/campeones/${champion.id}`,
   }));
 
   return [...staticRoutes, ...championRoutes];

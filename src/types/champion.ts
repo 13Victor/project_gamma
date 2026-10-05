@@ -22,7 +22,7 @@ export const CLASS_LABELS: Record<string, string> = {
 
 /** Lo que aporta Data Dragon. Generado: no editar a mano. */
 export interface ChampionBase {
-  /** Id de Data Dragon, estable (ej. "MonkeyKing" para Wukong). Clave del JSON manual. */
+  /** Id de Data Dragon, estable (ej. "MonkeyKing" para Wukong). Clave del JSON manual y de la URL. */
   id: string;
   /** Clave numérica de Data Dragon, como string. */
   key: string;
@@ -51,9 +51,8 @@ export interface ChampionManual {
 
 export type ChampionsManualData = Record<string, ChampionManual>;
 
-/** Campeón jugable: datos de Data Dragon + datos manuales + slug para URLs. */
-export type Champion = ChampionBase &
-  ChampionManual & {
-    /** Derivado del nombre (ver `slugify`). Usado en `/campeones/[slug]`. */
-    slug: string;
-  };
+/**
+ * Campeón jugable. Los datos manuales son opcionales: mientras no estén
+ * rellenados, el juego solo compara lo que sí viene de Data Dragon.
+ */
+export type Champion = ChampionBase & Partial<ChampionManual>;

@@ -61,6 +61,23 @@ describe("compareClassic", () => {
     expect(compareClassic(champ({ id: "C", releaseYear: 2015 }), target).releaseYear).toBe("match");
   });
 
+  it("atributos manuales ausentes en alguno de los dos -> unknown", () => {
+    const withoutManual = {
+      id: "Zed",
+      classes: ["Assassin"],
+      resource: "Energía",
+    };
+    const result = compareClassic(withoutManual, champ());
+    expect(result.gender).toBe("unknown");
+    expect(result.positions).toBe("unknown");
+    expect(result.species).toBe("unknown");
+    expect(result.region).toBe("unknown");
+    expect(result.releaseYear).toBe("unknown");
+    // Lo que sí viene de Data Dragon se sigue comparando.
+    expect(result.resource).toBe("miss");
+    expect(result.classes).toBe("match");
+  });
+
   it("isCorrect depende del id, no de que todos los atributos coincidan", () => {
     const result = compareClassic(champ({ id: "Otro" }), champ());
     expect(result.gender).toBe("match");

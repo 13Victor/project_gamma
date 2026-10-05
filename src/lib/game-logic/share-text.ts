@@ -12,10 +12,11 @@ export function buildShareText(params: {
   url?: string;
 }): string {
   const { challengeNumber, attempts, url } = params;
+  // Los atributos "unknown" (sin datos todavía) no se muestran.
   const rows = attempts.map((attempt) =>
-    CLASSIC_ATTRIBUTES.map((key) =>
-      attempt[key] === "match" ? "🟩" : "⬛"
-    ).join("")
+    CLASSIC_ATTRIBUTES.filter((key) => attempt[key] !== "unknown")
+      .map((key) => (attempt[key] === "match" ? "🟩" : "⬛"))
+      .join("")
   );
 
   const lines = [

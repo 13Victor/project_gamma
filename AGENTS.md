@@ -26,5 +26,7 @@ Antes de dar una tarea por terminada: `npm test`, `npm run typecheck` y `npm run
 - **La página del juego no puede resolver "hoy" en el servidor**: se prerenderiza en build. La fecha y el campeón del día se calculan en el cliente.
 - **Datos** (spec §9): `champions.json` se genera, no se edita. Lo que Data Dragon no da va en `champions-manual.json`, indexado por `id` de Data Dragon. Ningún fetch a Data Dragon fuera de `update-data.ts`.
 - **Lógica pura y testeada** en `src/lib/game-logic/`; el store solo la envuelve y persiste. Si cambia la forma del estado persistido, sube `version` en `useGameStore` y añade `migrate`.
+- **UI sin estilos por ahora**: HTML plano, Tailwind desactivado en `globals.css`. No añadas diseño hasta que se pida; la prioridad es validar la lógica.
+- Los datos manuales son opcionales: un atributo ausente se compara como `unknown` y no debe romper ni mostrarse como fallo.
 - Textos de UI en español. Imports con alias `@/` en `src/app`; relativos dentro de `src/lib` y `src/stores`.
 - Next.js 16: `params` es una `Promise`. Consulta `node_modules/next/dist/docs/` ante cualquier duda de API.

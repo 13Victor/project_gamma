@@ -76,7 +76,7 @@ async function main() {
 
   if (missing.length > 0) {
     console.warn(
-      `\n${missing.length} campeones SIN datos manuales (no serán jugables):\n  ${missing.join(", ")}`
+      `\n${missing.length} campeones SIN datos manuales (se juegan igualmente, pero solo con gama y recurso):\n  ${missing.join(", ")}`
     );
   }
   if (orphan.length > 0) {

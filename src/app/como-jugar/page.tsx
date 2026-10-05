@@ -10,16 +10,14 @@ export const metadata: Metadata = {
 
 export default function ComoJugarPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl flex-1 px-4 py-6">
-      <h1 className="text-2xl font-semibold">Cómo jugar</h1>
-      <p className="mt-3">
+    <>
+      <h1>Cómo jugar</h1>
+      <p>
         Cada día hay un campeón secreto. Escribe el nombre de un campeón, elige
-        uno de la lista y compara sus atributos con los del campeón del día.
-        No hay límite de intentos: sigue hasta acertar.
+        uno de la lista y compara sus atributos con los del campeón del día. No
+        hay límite de intentos: sigue hasta acertar.
       </p>
-
-      <h2 className="mt-6 text-lg font-semibold">Atributos</h2>
-      <ul className="mt-2 list-disc space-y-1 pl-5">
+      <ul>
         <li>Género, especie, recurso y región: verde si coinciden.</li>
         <li>Posición y gama: verde si comparten al menos una.</li>
         <li>
@@ -27,17 +25,10 @@ export default function ComoJugarPage() {
           campeón del día salió después (↑) o antes (↓).
         </li>
       </ul>
-
-      <h2 className="mt-6 text-lg font-semibold">Nuevo reto</h2>
-      <p className="mt-2">
-        El campeón cambia cada día a las 00:00 UTC, igual para todo el mundo.
+      <p>El campeón cambia cada día a las 00:00 UTC, igual para todo el mundo.</p>
+      <p>
+        <Link href="/clasico">Jugar al modo Clásico</Link>
       </p>
-
-      <p className="mt-6">
-        <Link href="/clasico" className="font-medium underline">
-          Jugar al modo Clásico
-        </Link>
-      </p>
-    </div>
+    </>
   );
 }
